@@ -1,0 +1,50 @@
+{%extends 'base_generic.html' %}
+
+{% block content %}
+ <h2>Профиль пользователя: {{user.username}}</h2>
+        <table>
+        <tbody>
+        <tr>
+            <th>
+                <label >Имя:</label>
+            </th>
+            <td>
+                <span >{{ user.first_name }}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label >Фамилия:</label>
+            </th>
+            <td>
+                <span >{{ user.last_name}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label >Отчество:</label>
+            </th>
+            <td>
+                <span >{{ user.profile.patronymic}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label >Должность:</label>
+            </th>
+            <td>
+                <span >{{ user.profile.job}}</span>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label >Подпись:</label>
+            </th>
+            <td>
+                <img src="{{ user.profile.signature_image.url}}">
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    <a  class="buv-c-back-button" href="{% url 'index'%}" >Назад</a>
+{% endblock %}

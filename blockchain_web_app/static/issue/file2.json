@@ -1,0 +1,16 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "id": "https://w3id.org/blockcerts/samples/2.0/revocation-list-testnet.json",
+  "type": "RevocationList",
+  "issuer": "https://w3id.org/blockcerts/samples/2.0/issuer-testnet.json",
+  "revokedAssertions": [
+    {
+      "id": "urn:uuid:dbca3249-fe45-4795-9817-8c81aad87b67",
+      "revocationReason": "last name error"
+    },
+    {
+      "id": "urn:uuid:eda7d784-c03b-40a2-ac10-4857e9627329",
+      "revocationReason": "name error."
+    }
+  ]
+}

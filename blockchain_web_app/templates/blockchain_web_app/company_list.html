@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Компании</h1>
+
+    {% if company_list %}
+    <ul>
+
+      {% for company in company_list %}
+      <li>
+        <a class= "list_templates" href="/blockchain_web_app/company/{{ company.id }}">{{ company.title }}</a> ({{company.created_data}})
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Пока компаний нет. Добавьте новую компанию.</p>
+    {% endif %}
+        <a class="buv-c-sumbit-button" href="{% url 'company_create'%}">Создать</a>
+        <a class="buv-c-back-button" href="{% url 'index'%}">Назад</a>
+{% endblock %}

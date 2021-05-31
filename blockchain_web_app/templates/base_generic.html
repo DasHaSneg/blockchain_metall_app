@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	{% block title %}<title>BlockProject</title>{% endblock %}
+	<link href="https://fonts.googleapis.com/css?family=Forum|Scada" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Playfair+Display&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/index.css">
+
+</head>
+<body>
+	<div class="content_page">
+		<div class="header">
+			<div class="header_container">
+				<div class="header_left">
+					<span class="logo">BLOCKCHAIN</span>
+				</div>
+					<nav class="main-nav">
+						<ul>
+							<li class="menu_item"><a class="cd-signin" href="{% url 'index' %}">ГЛАВНАЯ</a></li>
+							{% if user.is_authenticated %}
+							<li class="menu_item"><a class="cd-signin" href="{% url 'profile'%}">ПРОФИЛЬ</a></li>
+							<li class="menu_item"><a class="cd-signin" href="{% url 'companies'%}">КОМПАНИИ</a></li>
+							<li class="menu_item"><a class="cd-signin" href="{% url 'templates'%}">ШАБЛОНЫ</a></li>
+							<li class="menu_item"><a class="cd-signin" href="{% url 'template_sign'%}">ПОДПИСАТЬ</a></li>
+<!--							<li class="menu_item"><a class="cd-signin" href="{% url 'template_recall'%}">ОТОЗВАТЬ</a></li>-->
+							{% endif %}
+							{% if user.is_authenticated %}
+							<li class="menu_item"><a class="cd-signin" href="{% url 'logout'%}">ВЫХОД</a></li>
+							{% else %}
+							<li class="menu_item"><a class="cd-signin" href="{% url 'login'%}?next={{request.path}}">ВХОД</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+
+			</div>
+		</div>
+		<div class="content">
+			<div class="row">
+				{% block content %}
+
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+                                $('input').on('change', function() {
+
+                                    var splittedFakePath = this.value.split('\\');
+                                    $('#namefile').text(splittedFakePath[splittedFakePath.length - 1]);
+                                    if (this.value!=null) {
+                                        document.getElementById("verify2").type = 'sumbit';
+
+
+                                    }
+                                });
+                                $('#verify2').click(function () {
+
+                                        $('#namefile').text('Прикрепите файл');
+
+                                })
+        window.onload=function(){
+            document.getElementById("verify-button").click();};
+
+                            </script>
+
+<script  src="/static/js/verification.js"></script>
+    <script src="/static/js/footer.js"></script>
+
+</body>
+</html>

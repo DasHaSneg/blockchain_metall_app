@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Шаблоны</h1>
+
+    {% if contracttemplate_list %}
+    <ul>
+
+      {% for template in contracttemplate_list %}
+      <li>
+        <a class= "list_templates" href="/blockchain_web_app/template/{{ template.id }}">{{ template.buyer.title }} - {{ template.supplier.title }}</a> ({{template.created_data}})
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Пока шаблонов нет. Создайте новый шаблон договора.</p>
+    {% endif %}
+        <a class="buv-c-sumbit-button" href="{% url 'template_create'%}">Создать</a>
+        <a class="buv-c-back-button" href="{% url 'index'%}">Назад</a>
+{% endblock %}

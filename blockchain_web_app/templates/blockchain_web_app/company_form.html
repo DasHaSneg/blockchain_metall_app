@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input class="buv-c-sumbit-button" type="submit" value="Создать" />
+
+</form>
+<a class="buv-c-back-button" href="{% url 'companies'%}">Назад</a>
+{% endblock %}

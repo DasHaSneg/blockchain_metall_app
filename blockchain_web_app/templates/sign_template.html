@@ -1,0 +1,14 @@
+{%extends 'base_generic.html' %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <label for="id_roster" class="labelclass">Выбрать файл со списком:</label>
+        <span id="namefile" style="height: 20px; font-size: 18px;">Файл не выбран</span>
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input class="buv-c-sumbit-button" type="submit" value="Опубликовать">
+  </form>
+<a class="buv-c-back-button" href="{% url 'index'%}">Назад</a>
+{% endblock %}

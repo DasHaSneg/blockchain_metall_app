@@ -1,0 +1,15 @@
+{%extends 'base_generic.html' %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data" style="display: flex; justify-content: center;flex-direction: column;margin-button: 20px;">
+        {% csrf_token %}
+        <table style="margin-bottom: 20px;">
+        {{ form.as_table }}
+        </table>
+        <div class="buttons">
+            <a  class="buv-c-back-button" href="{% url 'templates'%}" >Назад</a>
+            <input class="buv-c-sumbit-button" type="submit"  value="Создать" style="margin-left: 20px;"/>
+        </div>
+    </form>
+
+{% endblock %}

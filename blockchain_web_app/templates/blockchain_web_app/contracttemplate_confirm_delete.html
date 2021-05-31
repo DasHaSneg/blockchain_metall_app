@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Удаление шаблона</h1>
+
+<p>Вы уверены, что хотите удалить шаблон: {{ template }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input class="buv-c-sumbit-button" type="submit" action="" value="Да, удалить." />
+</form>
+  <a class="buv-c-back-button" href="{% url 'templates'%}">Назад</a>
+{% endblock %}

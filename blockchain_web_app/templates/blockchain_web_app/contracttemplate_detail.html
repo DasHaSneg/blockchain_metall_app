@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Шаблон договора</h1>
+
+<p><strong>Покупатель:</strong> {{ contracttemplate.buyer.title}}</p>
+<p><strong>Поставщик:</strong> {{ contracttemplate.supplier.title}}</p>
+<a class="buv-c-sumbit-button" href="/blockchain_web_app/template/{{ contracttemplate.id }}/delete">Удалить</a>
+<a class="buv-c-back-button" href="{% url 'templates'%}">Назад</a>
+{% endblock %}

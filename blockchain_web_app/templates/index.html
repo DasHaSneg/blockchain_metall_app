@@ -1,0 +1,47 @@
+{%extends 'base_generic.html' %}
+
+{% block content %}
+    <form method="post" enctype=multipart/form-data action="{% url 'index' %}">
+		{% csrf_token %}
+        <div class="verifier">
+		    <section class="buv-c-verifier-main">
+			    <div class="buv-c-verifier-layout">
+                    <div class="buv-c-footer-content">
+                        <footer class="buv-c-footer">
+                            <label for="buv-json-file-upload" class="buv-o-link buv-o-text-12">
+						     <span class="buv-o-link__text--underline">Прикрепить JSON файл</span>
+						    <input type=file name=filesjson accept="application/json" id="buv-json-file-upload" class="buv-u-visually-hidden">
+                            </label>
+				        </footer>
+                        <div class="buv-c-footer" style="background-color: white">
+                            <span id="namefile"></span>
+                            {%if 'file_null_error' %}
+
+                            {%endif%}
+                        </div>
+                    </div>
+
+				    <section class>
+					    <buv-certificate-input>
+						    <section class="buv-c-certificate-input">
+
+        					    <buv-verify-button>
+        						    <button type="button" id="verify2" class="buv-c-verify-button">
+        							    <span class="buv-c-verify-button__label">Проверить</span>
+
+        						    </button>
+        					    </buv-verify-button>
+    					    </section>
+					    </buv-certificate-input>
+				    </section>
+
+			    </div>
+		    </section>
+	    </div>
+
+        <div>
+
+        </div>
+    </form>
+				
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Компания</h1>
+
+<p><strong>Название:</strong> {{ company.title}}</p>
+<p><strong>Контактное лицо:</strong> {{ company.name}}</p>
+<p><strong>Номер телефона:</strong> {{ company.phone}}</p>
+<p><strong>ИНН:</strong> {{ company.inn }}</p>
+<p><strong>ОГРН:</strong> {{ company.ogrn }}</p>
+<p><strong>Место нахождения:</strong> {{ company.address }}</p>
+<p><strong>Почтовый адрес:</strong> {{ company.mail_address }}</p>
+<p><strong>Эл. почта:</strong> {{ company.email }}</p>
+<a class="buv-c-sumbit-button" href="/blockchain_web_app/company/{{ company.id }}/delete">Удалить</a>
+<a class="buv-c-back-button" href="{% url 'companies'%}">Назад</a>
+{% endblock %}
