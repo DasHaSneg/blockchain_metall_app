@@ -30,7 +30,7 @@ class TemplateJson (object):
             'email': supplier.email,
         }
         self.user = {
-            'name': user.last_name + user.profile.patronymic + user.first_name,
+            'name': user.last_name + ' ' + user.first_name + ' ' + user.profile.patronymic ,
             'job': user.profile.job,
             'signature_image': encode_image(user.profile.signature_image.path)
         }
@@ -45,7 +45,6 @@ class TemplateJson (object):
 
 def create_assertion_section():
     return {
-        'issuedOn': '*|DATE|*',
         'id': URN_UUID_PREFIX + str(uuid.uuid4()),
         'specification': '*|List|*',
         'signedOn': '*|Data|*',

@@ -16,7 +16,7 @@ class ContractTemplateCreateForm(forms.Form):
 
 class ContractTemplateSignForm(forms.Form):
     user_template = forms.ModelChoiceField(required=True, widget=forms.Select(attrs={'class': 'myfield'}),
-                                           queryset=ContractTemplate.objects.all(), label="Шаблон контракта")
+                                           queryset=ContractTemplate.objects.all(), label="Шаблон договора")
     roster = forms.FileField(required=True, label="",
                              widget=forms.FileInput(attrs={'style': 'display: none;', 'accept': '.csv'}))
 

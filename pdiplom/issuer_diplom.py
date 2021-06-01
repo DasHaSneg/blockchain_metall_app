@@ -67,10 +67,10 @@ def broadcast_tx(uid, hashed):
 
 def sign_contract(roster, template_file):
     template = get_template(template_file)
-    template['specification'] = get_items_from_roster(roster)
-    template['issuedOn'] = create_iso8601_tz()
-
-    template_json_byte = template.encode()
+    template['specification'] = get_list_items(get_items_from_roster(roster))
+    template['signedOn'] = create_iso8601_tz()
+    print(template)
+    template_json_byte = json.dumps(template).encode()
     hashed_template = hash_byte_array(template_json_byte)
     result, err = broadcast_tx(template['id'].replace(URN_UUID_PREFIX, ""), hashed_template)
     if err:
@@ -94,7 +94,7 @@ class Item:
 
 def get_items_from_roster(roster):
     if os.path.exists(roster):
-        with open(roster, 'r') as theFile:
+        with open(roster, 'r', encoding="cp1251") as theFile:
             reader = csv.DictReader(theFile)
             items = map(lambda x: Item(x), reader)
             return list(items)
@@ -104,3 +104,16 @@ def get_items_from_roster(roster):
 
 def get_template(template_file):
     return json.loads(template_file)
+
+def get_list_items(items):
+    result_list = []
+    for item in items:
+        tmp_dict = {}
+        tmp_dict['id'] = item.id
+        tmp_dict['name'] = item.name
+        tmp_dict['unit_price'] = item.unit_price
+        tmp_dict['unit_of_measurement'] = item.unit_of_measurement
+        tmp_dict['amount'] = item.amount
+        tmp_dict['country'] = item.country
+        result_list.append(tmp_dict)
+    return result_list

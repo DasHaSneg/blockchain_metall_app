@@ -72,7 +72,7 @@ class ContractTemplate(models.Model):
         return '{0} - {1} ({2})'.format(self.buyer.title, self.supplier.title, self.created_data)
 
     class Meta:
-        verbose_name = 'Шаблон контракта'
-        verbose_name_plural = 'Шаблоны контрактов'
+        verbose_name = 'Шаблон договора'
+        verbose_name_plural = 'Шаблоны договоров'
         ordering = ['-created_data']
 

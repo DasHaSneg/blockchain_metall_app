@@ -10,10 +10,11 @@ def get_formatted_verification_info(file_json, verification_result):
     :return: dict
     """
     info = json.loads(file_json)
-    issued_on = info['issuedOn'][8:10] + "." + info['issuedOn'][5:7] + "."+ info['issuedOn'][0:4]
+    issued_on = info['signedOn'][8:10] + "." + info['signedOn'][5:7] + "."+ info['signedOn'][0:4]
     return {
         'buyer': info['buyer']['title'],
         'supplier': info['supplier']['title'],
+        'specification': info['specification'],
         'responsible_name': info['responsible']['name'],
         'responsible_job': info['responsible']['job'],
         'signature_img':  info['responsible']['signature_image'],

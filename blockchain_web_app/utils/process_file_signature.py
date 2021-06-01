@@ -14,4 +14,7 @@ def process_file_signature(request):
     csv_file_path = upload_csv_file(request.FILES['roster'], user_id)
     json_data = load_json(template.json_file.name)
     signed_template, message = sign_contract(csv_file_path, json_data)
-    return HttpResponse(json.dumps(signed_template), content_type="application/json")
+    response = HttpResponse(json.dumps(signed_template), content_type='application/json"')
+    filename = 'signed_contract.json'
+    response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
+    return response

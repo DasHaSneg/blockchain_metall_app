@@ -12,11 +12,34 @@
 <!--        </div>-->
 
         <div class="certificate-meta">
-            <span class="certificate-name">{{ buyer }}</span>
-            <span class="certificate-name">{{ supplier }}</span>
+            <span class="certificate-name"> Покупатель: {{ buyer }}</span>
+            <span class="certificate-name">Поставщик: {{ supplier }}</span>
 <!--            <span class="issuer-name">{{ organization }}</span>-->
 
         </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Наименование товара</th>
+                    <th>Ед. изм</th>
+                    <th>Кол–во товара</th>
+                    <th>Цена за единицу в руб., без  НДС </th>
+                    <th>Страна происхождения товара</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in specification%}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{item.unit_of_measurement}}</td>
+                    <td>{{ item.amount }}</td>
+                    <td>{{ item.unit_price }}</td>
+                    <td>{{ item.country }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
         <div class="certificate-description">
 <!--            <p>{{ text }}</p>-->
@@ -24,7 +47,7 @@
         </div>
         <div class="sinature">
             <p style="display: inline;">Подписал: {{ responsible_job }} {{responsible_name}} </p>
-            <img src="{{ signature_img }}" id="signature-img" alt="Signature"/>
+            <img src="{{ signature_img }}" id="signature-img" alt="Signature" style="width: 20%;height:20%;float: right;"/>
         </div>
 
 
@@ -39,15 +62,15 @@
 <!--    </div>-->
     <div class="verify">
 
-        <button id="verify-button" value="{{ verification_info }}" class="buv-c-verify-button_award">Проверить диплом</button>
-        {% if ver_responce == 1 %}
-        <p class="verified"><img id="verified-icon" src="/static/img/verified.png" style="max-width: 36px;max-height: 36px;"> Диплом правильный </p>
-        {% elif ver_responce == 2 %}
+        <button id="verify-button" value="{{ verification_info }}" class="buv-c-verify-button_award">Проверить договор</button>
+        {% if verification_result == 1 %}
+        <p class="verified"><img id="verified-icon" src="/static/img/verified.png" style="max-width: 36px;max-height: 36px;"> договор существует в блокчейне</p>
+        {% elif verification_result == 2 %}
         <p class="not-verified"><img id="recall-icon"
-                                                          src="/static/img/not-verified.png" style="max-width: 36px;max-height: 36px;"> Диплом отозван </p>
+                                                          src="/static/img/not-verified.png" style="max-width: 36px;max-height: 36px;"> договор отозван </p>
         {% else %}
         <p class="not-verified"><img id="not-verified-icon"
-                                                          src="/static/img/not-verified.png" style="max-width: 36px;max-height: 36px;"> Диплом не правильный </p>
+                                                          src="/static/img/not-verified.png" style="max-width: 36px;max-height: 36px;"> договор не существует в блокчейне </p>
         {% endif %}
     </div>
 
@@ -60,5 +83,5 @@
 <!--        <strong>Почта:</strong> <span class="issuer-id-url"><a style="cursor: pointer;text-decoration: none;color: inherit;font-size: 18px;" href="{{ email }}" target="_blank">{{ email }}</a></span>-->
 <!--    </div>-->
 
-    <a href="{% url 'index' %}" class="back-button">Проверить другой диплом</a>
+    <a href="{% url 'index' %}" class="back-button">Проверить другой договор</a>
 {% endblock %}
